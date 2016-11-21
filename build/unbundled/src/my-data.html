@@ -1,0 +1,22 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+
+</head><body><dom-module id="my-data">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <div class="card">
+      <div class="circle">4</div>
+      <h1>{{title}}</h1>
+      <div>{{content}}<div>
+    </div>
+  </div></div></template>
+
+  <script>Polymer({is:"my-data",properties:{title:{type:String,value:"Datos en Polymer"},content:{type:String,value:"Esto es contenido insertado a través de un data binding."}}});</script>
+</dom-module></body></html>
