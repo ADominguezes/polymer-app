@@ -9,6 +9,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-binding">
@@ -20,17 +23,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 10px;
       }
     </style>
+    <!-- Modal para mostrar el binding -->
+    <paper-dialog id="modal" modal>
+      <p>{{nameUser}}</p>
+      <div class="buttons">
+        <paper-button dialog-confirm autofocus>Cerrar</paper-button>
+      </div>
+    </paper-dialog>
 
+    <!-- Tarjeta en la que aparece el contenido de la página -->
     <div class="card">
       <div class="circle">1</div>
       <h1>{{title}}</h1>
       <div>{{content}}<div>
+        <div>
+          <form is="iron-form" method="get" action="/" id="basic">
+            <paper-input name="name" value="{{nameUser}}" label="Inserta tu nombre" required></paper-input>
+            <paper-button raised on-click="modal.open()">Ver Binding</paper-button>
+          </form>
+        </div>
     </div>
   </template>
 
   <script>
     Polymer({
       is: 'my-binding',
+      mostrarBind : function () {
+        modal.open();
+      },
       properties: {
         title: {
           type:String,
@@ -39,6 +59,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         content: {
           type: String,
           value: "Esto es contenido insertado a través de un data binding."
+        },
+        nameUser: {
+          type: String,
+          value: ""
         }
       }
     });

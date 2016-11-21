@@ -31,6 +31,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     Polymer({
       is: 'my-data',
+      ready: function() {
+          this.content="Aquí se van a poder ver como funcionan los datos en Polymer"
+      },
       properties: {
         title: {
           type:String,
@@ -38,7 +41,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         },
         content: {
           type: String,
-          value: "Esto es contenido insertado a través de un data binding."
+          value: ""
         }
       }
     });
